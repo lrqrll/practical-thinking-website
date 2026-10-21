@@ -1,4 +1,4 @@
-export const galleryThemes={light:{bg:'#f3f3ef',paper:'#fafaf6',text:'#252b26',muted:'#5f685f',line:'#7d8977',accent:'#4c6251',soft:'#e4e8df'},dark:{bg:'#252a27',paper:'#2d332f',text:'#ebeee5',muted:'#bcc4b7',line:'#7b8777',accent:'#b5c0ac',soft:'#384139'}};
+export const galleryThemes={"light":{"bg":"#f4f1eb","paper":"#fdfbf7","text":"#302d2a","muted":"#696159","line":"#8f8377","accent":"#526762","soft":"#e8e3dc"},"dark":{"bg":"#242629","paper":"#2e3134","text":"#eee8df","muted":"#c0b4a7","line":"#8f857b","accent":"#c3b095","soft":"#383c3d"}};
 export function isGalleryPreview(search=''){return new URLSearchParams(search).get('design')==='gallery';}
 export function preferredTheme(raw,dark=false){try{const t=JSON.parse(raw||'null')?.theme;if(t==='light'||t==='dark')return t;}catch{}return dark?'dark':'light';}
 
