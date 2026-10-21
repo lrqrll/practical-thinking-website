@@ -1,0 +1,2 @@
+export function optionReview(q,selected){if(!q.options)return [];const keys=q.correct||q.accepted||(q.id==='q-choice-01'?['b']:q.id==='q-multi-01'?['a','b']:null);if(!keys)throw Error('缺少選項判定規則');return q.options.map(([key,text])=>({key,text,selected:selected.includes(key),correct:keys.includes(key),reason:q.explanations?.[key]||q.outcomes?.[key]||'此舊版題目未提供逐項解析，請查看當時的總結。'}));}
+export function choiceDraftKey(q){return q?.version==='1.0'?q.id:q.id+'@'+q.version;}
