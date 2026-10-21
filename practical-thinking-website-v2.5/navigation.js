@@ -2,14 +2,14 @@ const copy=value=>JSON.parse(JSON.stringify(value));
 const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
 export function routeUrl(route){
  const params=new URLSearchParams();
- for(const key of ['selected','micro','qid','unitId'])if(route[key]!=null)params.set(key,route[key]);
+ for(const key of ['selected','micro','qid','unitId','taskId'])if(route[key]!=null)params.set(key,route[key]);
  for(const [key,value] of Object.entries(route.workspace||{}))if(value!=null)params.set(key,value);
  return '#/'+route.page+(params.size?'?'+params:'');
 }
 export function routeFromHash(hash){
  const match=/^#\/([a-z]+)(?:\?(.*))?$/.exec(hash||'');if(!match)return null;
  const p=new URLSearchParams(match[2]);const route={page:match[1]};
- for(const key of ['selected','micro','qid','unitId'])if(p.has(key))route[key]=p.get(key);
+ for(const key of ['selected','micro','qid','unitId','taskId'])if(p.has(key))route[key]=p.get(key);
  if(['studio','scenarios'].includes(route.page)){route.workspace={};for(const key of ['projectId','tool','simId','scenarioId'])if(p.has(key))route.workspace[key]=p.get(key);}
  return route;
 }
